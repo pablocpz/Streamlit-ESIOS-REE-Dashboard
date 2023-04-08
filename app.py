@@ -33,7 +33,7 @@ if action == "Generation Data":
                 
                 start_date = st.date_input("Enter the start date:", max_value=datetime.today().date())
                 end_date = st.date_input("Enter the end date", max_value=datetime.today().date())
-                group = st.selectbox("Select how to group data", ("hour", "day", "week", "month", "year"))
+                group = st.selectbox("Select how to group data", ("hour", "day", "month", "year"))
                 graphic_type = st.selectbox("Select type of graphic", ("bar", "area"))
                 use_facets = st.checkbox("Use Facets")
                 submit = st.form_submit_button("Submit")
@@ -59,7 +59,7 @@ elif action == "Price Data":
                     indicator = st.multiselect("Enter the indicator/s", options=[x for x in range(1, 100000)], default=84)
                     start_date = st.date_input("Enter the start date:", max_value=datetime.today().date())
                     end_date = st.date_input("Enter the end date", max_value=datetime.today().date())
-                    group = st.selectbox("Select how to group data", ("hour", "day", "week", "month", "year"))
+                    group = st.selectbox("Select how to group data", ("hour", "day", "month", "year"))
                     graphic_type = st.selectbox("Select type of graphic", ("line", "area", "bar"))
                     use_facets = st.checkbox("Use Facets")
                     submit = st.form_submit_button("Submit")
