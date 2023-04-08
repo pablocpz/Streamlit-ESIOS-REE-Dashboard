@@ -7,7 +7,7 @@ https://neuralroot-streamlit-esios-ree-dashboard-app-6b9hjz.streamlit.app/
 
 ### **Guide**
 - Create a virtual enviromment using `conda create -n streamlit_app`, and then do `conda activate streamlit_app`
-- Replace *"${{ secrets.ESIOS_TOKEN }}"* in `credentials.json` with your own ESIOS token, can be owned [here](consultasios@ree.es)
+- Replace the **token value** in `credentials.json` with your own ESIOS token, can be owned [here](consultasios@ree.es)
 - Pip install -r requirements.txt
 - Then, move to the `root folder`, and do **streamlit run app.py**
 
