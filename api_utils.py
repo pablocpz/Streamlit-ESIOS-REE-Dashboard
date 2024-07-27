@@ -49,7 +49,7 @@ def process_indicator(action, indicator, start_date, end_date, time_trunc, time_
 
                 df = df.rename({'value':col_name}, axis=1)
 
-                df.datetime_utc = pd.to_datetime(df.datetime_utc)
+                df.datetime_utc = pd.to_datetime(df.datetime_utc, format='mixed', dayfirst=True)
 
                 df = df[[col_name, 'datetime_utc']] 
     
