@@ -41,49 +41,28 @@ def process_indicator(action, indicator, start_date, end_date, time_trunc, time_
                 st.warning("Invalid indicator ID")
                 return pd.DataFrame()
 
-            # else:
-                
-            #     df = pd.DataFrame(data['indicator']['values'])
-
-            #     col_name = data['indicator']['short_name']
-
-            #     df = df.rename({'value':col_name}, axis=1)
-
-            #     df.datetime_utc = pd.to_datetime(df.datetime_utc, format='mixed') # dayfirst=True
- 
-            #     df = df[[col_name, 'datetime_utc']] 
-    
-            #     df = df.set_index('datetime_utc')
-
-            #     if df.shape[0] == 0: #data doesn´t exist
-            #         st.warning("Data not found")
-            #         return pd.DataFrame()
-
-            #     else:     
-            #         return df.loc[f'{start_date}' : f'{end_date}']
-
             else:
-                        
-                    df = pd.DataFrame(data['indicator']['values'])
-                    col_name = data['indicator']['short_name']
-                    df = df.rename({'value': col_name}, axis=1)
+                
+                df = pd.DataFrame(data['indicator']['values'])
+
+                col_name = data['indicator']['short_name']
+
+                df = df.rename({'value':col_name}, axis=1)
+
+                df.datetime_utc = pd.to_datetime(df.datetime_utc, format='mixed') # dayfirst=True
+ 
+                df = df[[col_name, 'datetime_utc']] 
+    
+                df = df.set_index('datetime_utc')
+
+                if df.shape[0] == 0: #data doesn´t exist
+                    st.warning("Data not found")
+                    return pd.DataFrame()
+
+                else:     
+                    return df.loc[f'{start_date}' : f'{end_date}']
             
-                    try:
-                        df['datetime_utc'] = pd.to_datetime(df['datetime_utc'], format='mixed')  # dayfirst=True if needed
-                    except Exception as e:
-                        st.warning(f"Date parsing error: {e}")
-                        return pd.DataFrame()
-            
-                    df = df[[col_name, 'datetime_utc']]
-                    df = df.set_index('datetime_utc')
-            
-                    if df.shape[0] == 0:  # Check if data doesn't exist
-                        st.warning("Data not found")
-                        return pd.DataFrame()
-                    else:
-                        return df.loc[start_date: end_date]
-                        
-                    elif action == "price": #otherwise, user want to see energy prices:
+        elif action == "price": #otherwise, user want to see energy prices:
             
             
             url = f"https://api.esios.ree.es/indicators/{indicator}?start_date={start_date}T00:00&end_date={end_date}T23:59&time_trunc={time_trunc}&time_agg={time_agg}"
@@ -225,8 +204,6 @@ def indicator_data(action, indicators, start_date, end_date, time_trunc):
                 
                 return dfviz
                 
-    
-
 
 
 
